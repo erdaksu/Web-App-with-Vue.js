@@ -1,0 +1,82 @@
+body {
+  background-color: rgb(255, 255, 255);
+}
+
+#logo {
+  float: left;
+}
+#searchbox {
+  width: 300px;
+}
+#logo,
+button,
+#searchbox {
+  height: 50px;
+  display: inline-block;
+}
+button {
+  height: 50px;
+  margin: 20px;
+  padding: 10px;
+}
+
+/* - MAIN SECTIONS - */
+header {
+  background-color: rgb(65, 65, 65);
+  font-size: 25px;
+  font-family: "Medula One";
+  color: #78a0b9;
+  padding: 10px;
+}
+aside {
+  background-color: rgb(65, 65, 65);
+  font-size: 25px;
+  font-family: "Medula One";
+  color: white;
+  padding: 10px;
+  text-align: center;
+  float: left;
+}
+main {
+  background-color: rgb(65, 65, 65);
+  font-size: 25px;
+  font-family: "Medula One";
+  color: white;
+  padding: 10px;
+  text-align: center;
+  float: right;
+}
+footer {
+  background-color: rgb(65, 65, 65);
+  padding: 10px;
+  font-family: "Medula One";
+  color: #78a0b9;
+  text-align: center;
+  float: right;
+}
+/* - MAIN SECTIONS - */
+
+/* - CSS GRID - */
+.container {
+  display: grid;
+  gap: 10px;
+  grid-template-rows: 1fr 2fr 1fr;
+  grid-template-columns: 0.5fr 3fr;
+}
+header {
+  grid-column: 1/3;
+  grid-row: 1;
+}
+aside {
+  grid-column: 1;
+  grid-row: 2;
+}
+main {
+  grid-column: 2;
+  grid-row: 2;
+}
+footer {
+  grid-column: 1/3;
+  grid-row: 3;
+}
+/* - CSS GRID END - */
