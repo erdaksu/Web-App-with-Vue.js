@@ -2,42 +2,54 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="style.css">
-    <link href='https://fonts.googleapis.com/css?family=Medula One' rel='stylesheet'>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="style.css" />
+    <link href="https://fonts.googleapis.com/css?family=Medula One" rel="stylesheet" />
     <title>Class and Activities</title>
 </head>
 
 <body>
     <div class="container">
         <header>
-            <img id="logo" src="/images/logo.png">
+            <img id="logo" src="/images/logo.png" />
             <ul>
                 <li><a href="index.html">HOME</a></li>
                 <li><a class="active" href="login.html">LOGIN</a></li>
                 <li><a href="register.html">REGISTER</a></li>
                 <li><a href="basket.html">SHOPPING BASKET</a></li>
-              </ul>
+            </ul>
         </header>
-       
+
         <main>
-            
+            <form id="signup">
+                <h1>LOG IN</h1>
+                <label for="email">EMAIL:</label>
+                <input required type="email" id="email" v-model="email" />
+                <br /><br />
+                <label for="password">PASSWORD:</label>
+                <input required type="password" id="password" v-model="password" />
+                <br /><br />
+                <button v-on:click="onSubmit" class="submit">
+                    CLICK HERE TO LOG IN
+                </button>
+            </form>
         </main>
         <footer>
             <div class="footer-text">
-            <p>© CLASS AND ACTIVITIES BY ERDEM AKSU ©</p>
-            <p>CONTACT EMAIL: CLASSANDACTIVITESUPPORT@GMAIL.COM</p>
-        </div>
-            <div id="footer-links">
-                <a href=https:/www.instagram.com/classandactivities.>
-                <img src=/images/instagram.png width="50" height="50">
-                <a href=https:/www.twitter.com/classandactivities.>
-                <img src=/images/twitter.png width="50" height="50">
+                <p>© CLASS AND ACTIVITIES BY ERDEM AKSU ©</p>
+                <p>CONTACT EMAIL: CLASSANDACTIVITESUPPORT@GMAIL.COM</p>
             </div>
-
+            <div id="footer-links">
+                <a href=https:/www.instagram.com/classandactivities.> <img src=/images/instagram.png width="50"
+                    height="50"> <a href=https:/www.twitter.com/classandactivities.> <img src=/images/twitter.png
+                        width="50" height="50">
+            </div>
         </footer>
+
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <script src="main.js" charset="utf-8"></script>
     </div>
 </body>
 

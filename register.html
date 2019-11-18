@@ -19,25 +19,36 @@
                 <li><a href="login.html">LOGIN</a></li>
                 <li><a class="active" href="register.html">REGISTER</a></li>
                 <li><a href="basket.html">SHOPPING BASKET</a></li>
-              </ul>
+            </ul>
         </header>
-       
+
         <main>
-            
+            <h1>REGISTER</h1>
+            <form id="register">
+                <label for="email">EMAIL:</label>
+                <input required type="email" id="email" v-model='email'>
+                <br><br>
+                <label for="password">PASSWORD:</label>
+                <input required type="password" id="password" v-model='password'>
+                <br><br>
+                <button v-on:click='onSubmit' class="submit">CLICK HERE TO REGISTER</button>
+            </form>
         </main>
         <footer>
             <div class="footer-text">
-            <p>© CLASS AND ACTIVITIES BY ERDEM AKSU ©</p>
-            <p>CONTACT EMAIL: CLASSANDACTIVITESUPPORT@GMAIL.COM</p>
-        </div>
+                <p>© CLASS AND ACTIVITIES BY ERDEM AKSU ©</p>
+                <p>CONTACT EMAIL: CLASSANDACTIVITESUPPORT@GMAIL.COM</p>
+            </div>
             <div id="footer-links">
-                <a href=https:/www.instagram.com/classandactivities.>
-                <img src=/images/instagram.png width="50" height="50">
-                <a href=https:/www.twitter.com/classandactivities.>
-                <img src=/images/twitter.png width="50" height="50">
+                <a href=https:/www.instagram.com/classandactivities.> <img src=/images/instagram.png width="50"
+                    height="50">
+                    <a href=https:/www.twitter.com/classandactivities.> <img src=/images/twitter.png width="50"
+                        height="50">
             </div>
 
         </footer>
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <script src="main.js" charset="utf-8"></script>
     </div>
 </body>
 
