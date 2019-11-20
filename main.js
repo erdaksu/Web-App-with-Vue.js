@@ -1,52 +1,42 @@
-var courses = [
-    { 'topic': 'math', 'location': 'hendon', 'price': 100 },
-    { 'topic': 'math', 'location': 'colindale', 'price': 80 },
-    { 'topic': 'math', 'location': 'brent cross', 'price': 90 },
-    { 'topic': 'math', 'location': 'golders green', 'price': 120 },
-    { 'topic': 'english', 'location': 'hendon', 'price': 110 },
-    { 'topic': 'english', 'location': 'colindale', 'price': 90 },
-    { 'topic': 'english', 'location': 'brent cross', 'price': 90 },
-    { 'topic': 'english', 'location': 'golders green', 'price': 130 },
-    { 'topic': 'piano', 'location': 'hendon', 'price': 120 },
-    { 'topic': 'piano', 'location': 'golders green', 'price': 140 }
-]
+var app = new Vue({
+    el: '#search',
+    data() {
+        return {
+            searchQuery: null,
+            courses: [
+                { 'topic': 'Maths Classes -', 'location': 'Location: Hendon -', 'price': 'Price: £100', 'url': "/math.html" },
+                { 'topic': 'Maths Classes -', 'location': 'Location: Colindale -', 'price': 'Price: £80', 'url': "/math.html" },
+                { 'topic': 'Maths Classes -', 'location': 'Location: Brent Cross -', 'price': 'Price: £90', 'url': "/math.html" },
+                { 'topic': 'Maths Classes -', 'location': 'Location: Golders Green -', 'price': 'Price: £120', 'url': "/math.html" },
 
-var filterApp = newVue({
-    el: '#filter',
-    data: {
-        courses: courses,
-        selectedTopic: [],
-        selectedLocation: [],
-    },
-    methods: {
-        reset: function () {
-            this.selectedTopic = [];
-            this.selectedLocation = [];
-        }
+                { 'topic': 'English Classes -', 'location': 'Location: Hendon -', 'price': 'Price: £100', 'url': "/english.html" },
+                { 'topic': 'English Classes -', 'location': 'Location: Colindale -', 'price': 'Price: £80', 'url': "/english.html" },
+                { 'topic': 'English Classes -', 'location': 'Location: Brent Cross -', 'price': 'Price: £90', 'url': "/english.html" },
+                { 'topic': 'English Classes -', 'location': 'Location: Golders Green -', 'price': 'Price: £120', 'url': "/english.html" },
+
+                { 'topic': 'Science Classes -', 'location': 'Location: Hendon -', 'price': 'Price: £100', 'url': "/science.html" },
+                { 'topic': 'Science Classes -', 'location': 'Location: Colindale -', 'price': 'Price: £80', 'url': "/science.html" },
+                { 'topic': 'Science Classes -', 'location': 'Location: Brent Cross -', 'price': 'Price: £90', 'url': "/science.html" },
+                { 'topic': 'Science Classes -', 'location': 'Location: Golders Green -', 'price': 'Price: £120', 'url': "/science.html" },
+
+                { 'topic': 'Sports Classes -', 'location': 'Location: Hendon -', 'price': 'Price: £100', 'url': "/sports.html" },
+                { 'topic': 'Sports Classes -', 'location': 'Location: Colindale -', 'price': 'Price: £80', 'url': "/sports.html" },
+                { 'topic': 'Sports Classes -', 'location': 'Location: Brent Cross -', 'price': 'Price: £90', 'url': "/sports.html" },
+                { 'topic': 'Sports Classes -', 'location': 'Location: Golders Green -', 'price': 'Price: £120', 'url': "/sports.html" },
+            ]
+        };
     },
     computed: {
-        filteredCourses: function () {
-            var topics = this.selectedTopic, locations = this.selectedLocation;
-            return this.courses.filter(function (course) {
-                var topicMatch = false, locationMatch = false;
-                if (topics.length > 0) {
-                    if (topics.includes(course.topic)) {
-                        topicMatch = true;
-                    }
-                }
-                else {
-                    topicMatch = true;
-                }
-                if (locations.length > 0) {
-                    if (locations.includes(course.location)) {
-                        locationMatch = true;
-                    }
-                }
-                else {
-                    locationMatch = true;
-                }
-                return topicMatch && locationMatch
-            })
+        resultQuery() {
+            if (this.searchQuery) {
+                return this.courses.filter((item) => {
+                    return this.searchQuery.toLowerCase().split(' ').every(a => item.topic.toLowerCase().includes(a))
+                })
+            } else {
+                return this.courses;
+            }
         }
     }
 
+
+})

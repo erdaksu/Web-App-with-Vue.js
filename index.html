@@ -2,20 +2,19 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    <script src="main.js" charset="utf-8"></script>
-    <link rel="stylesheet" href="style.css">
-    <link href='https://fonts.googleapis.com/css?family=Medula One' rel='stylesheet'>
+    <link rel="stylesheet" href="style.css" />
+    <link href="https://fonts.googleapis.com/css?family=Medula One" rel="stylesheet" />
     <title>Class and Activities</title>
 </head>
 
 <body>
     <div class="container">
         <header>
-            <img id="logo" src="/images/logo.png">
+            <img id="logo" src="/images/logo.png" />
             <ul>
                 <li><a class="active" href="#home">HOME</a></li>
                 <li><a href="login.html">LOGIN</a></li>
@@ -23,30 +22,28 @@
                 <li><a href="basket.html">SHOPPING BASKET</a></li>
             </ul>
         </header>
-        <aside>
-            <div id="filter">
-                <h1>Filters</h1>
-                <select multiplev-model='selectedTopic'>
-                    <option v-for='topic in topics'>
-                        {{topic}}
-                    </option>
-                </select>
-                <p>Selected topics:{{selectedTopic}}</p>
-                <select multiplev-model='selectedLocation'>
-                    <option v-for="location in locations">{{location}}</option>
-                </select>
-                <p>Selectedlocation: {{selectedLocation}}</p>
-                <button v-on:click='reset'>reset</button>
-            </div>
-        </aside>
-        <section>
-            <div id="courseList">
-                <h1>Courselist</h1>
-                <div v-for="course in filteredCourses" class="course">
-                    <li v-for='(value, name) in course'>{{name}}:{{value}}</li>
+        <main>
+            <div id="search">
+                <div class="searchbar">
+                    <img id="search-png" src="/images/searchbar.png" />
+                    <input class="search-box" type="text" v-model="searchQuery" placeholder="SEARCH FOR A COURSES" />
+                </div>
+                <div class="class-activities">
+                    <table v-if="courses.length" class="table">
+                        <tr>
+                            <th>Classes and Activities</th>
+                        </tr>
+                        <tr v-for="item in resultQuery">
+                            <td>
+                                <a v-bind:href="item.url" class="course-url">
+                                    {{item.topic}} {{item.location}} {{item.price}}
+                                </a>
+                            </td>
+                        </tr>
+                    </table>
                 </div>
             </div>
-        </section>
+        </main>
         <footer>
             <div class="footer-text">
                 <p>© CLASS AND ACTIVITIES BY ERDEM AKSU ©</p>
@@ -54,13 +51,12 @@
             </div>
             <div id="footer-links">
                 <a href=https:/www.instagram.com/classandactivities.> <img src=/images/instagram.png width="50"
-                    height="50">
-                    <a href=https:/www.twitter.com/classandactivities.> <img src=/images/twitter.png width="50"
-                        height="50">
+                    height="50"> <a href=https:/www.twitter.com/classandactivities.> <img src=/images/twitter.png
+                        width="50" height="50">
             </div>
-
         </footer>
     </div>
+    <script src="main.js" charset="utf-8"></script>
 </body>
 
 </html>
