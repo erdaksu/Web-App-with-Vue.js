@@ -25,15 +25,20 @@
 
         <main>
             <form id="signup">
-                <h1>Sign up</h1>
-                <label for="email">email: </label>
-                <input required type="email" id="email" v-model='email'>
-                <br><br>
-                <label for="password">password: </label>
-                <input required type="password" id="password" v-model='password'>
-                <br><br>
-                <button v-on:click='onSubmit'>submit</button>
-                </form>
+                <h1>SIGN UP</h1>
+                <label for="tyoe">WHAT TYPE OF USER ARE YOU</label><br>
+                <input type="radio" id="type" value="user" v-model="type">STUDENT OR PARENT<br>
+                <input type="radio" id="type" value="provider" v-model="type">SERVICE PROVIDER<br>
+                <label for="email">EMAIL:</label>
+                <input required type="email" id="email" v-model="email" />
+                <br /><br />
+                <label for="password">PASSWORD:</label>
+                <input required type="password" id="password" v-model="password" />
+                <br /><br />
+                <button v-on:click="onSubmit" class="submit">
+                    CLICK HERE TO SIGN UP
+                </button>
+            </form>
         </main>
 
         <footer>
