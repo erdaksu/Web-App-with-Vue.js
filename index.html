@@ -22,7 +22,9 @@
                 <li><a href="basket.html">SHOPPING BASKET</a></li>
             </ul>
         </header>
-        <main>
+
+        <aside>
+            <h1>CLICK ON COURSE TO GO TO COURSE PAGE</h1>
             <div id="search">
                 <div class="searchbar">
                     <img id="search-png" src="/images/searchbar.png" />
@@ -33,7 +35,7 @@
                         <tr>
                             <th>Classes and Activities</th>
                         </tr>
-                        <tr v-for="item in resultQuery">
+                        <tr v-for="item in resultQuery" class="course">
                             <td>
                                 <a v-bind:href="item.url" class="course-url">
                                     {{item.topic}} {{item.location}} {{item.price}}
@@ -43,7 +45,65 @@
                     </table>
                 </div>
             </div>
-        </main>
+        </aside>
+
+        <section>
+            <h1>FILTER BY EITHER COURSE, LOCATION OR PRICE</h1>
+            <div class="filtercourses" id="filtercourses">
+                <ul class="course-list">
+                    <div class="filter">
+                        <br>
+                        <label><input type="radio" v-model="selectedCourse" value="All" /> All Courses</label>
+                        <label><input type="radio" v-model="selectedCourse" value="Maths" /> Maths</label>
+                        <label><input type="radio" v-model="selectedCourse" value="English" /> English</label>
+                        <label><input type="radio" v-model="selectedCourse" value="Science" /> Science</label>
+                        <label><input type="radio" v-model="selectedCourse" value="Sports" /> Sports</label>
+                    </div>
+                    </br>
+                    <li v-for="course in filteredCourses">
+                        {{ course.topic }}
+                        {{ course.location }}
+                        {{ course.price }}
+                    </li>
+                    <br>
+                </ul>
+                <ul class="course-list">
+                    <br>
+                    <div class="filter">
+                        <label><input type="radio" v-model="selectedLocation" value="All" /> All Location</label>
+                        <label><input type="radio" v-model="selectedLocation" value="Hendon" /> Hendon </label>
+                        <label><input type="radio" v-model="selectedLocation" value="Colindale" /> Colindale</label>
+                        <label><input type="radio" v-model="selectedLocation" value="Brent_Cross" /> Brent Cross</label>
+                        <label><input type="radio" v-model="selectedLocation" value="Golders_Green" />
+                            GoldersGreen</label>
+                    </div>
+                    </br>
+                    <li v-for="course in filteredLocations">
+                        {{ course.topic }}
+                        {{ course.location }}
+                        {{ course.price }}
+                    </li>
+                    <br>
+                </ul>
+                <ul class="course-list">
+                    <br>
+                    <div class="filter">
+                        <label><input type="radio" v-model="selectedPrice" value="All" /> All Prices</label>
+                        <label><input type="radio" v-model="selectedPrice" value="£100" /> £100 </label>
+                        <label><input type="radio" v-model="selectedPrice" value="£80" /> £80</label>
+                        <label><input type="radio" v-model="selectedPrice" value="£90" /> £90</label>
+                        <label><input type="radio" v-model="selectedPrice" value="£120" /> £120</label>
+                    </div>
+                    </br>
+                    <li v-for="course in filteredPrices">
+                        {{ course.topic }}
+                        {{ course.location }}
+                        {{ course.price }}
+                    </li>
+                </ul>
+            </div>
+        </section>
+
         <footer>
             <div class="footer-text">
                 <p>© CLASS AND ACTIVITIES BY ERDEM AKSU ©</p>
