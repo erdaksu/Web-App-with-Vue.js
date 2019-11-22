@@ -55,6 +55,27 @@
                 <br>
                 <span>{{ selected}}</span>
             </div>
+
+            <h1>FILTER COURSES</h1>
+            <div id="filter">
+                <select multiple v-model='selectedTopic'>
+                    <option v-for='topic in topics'>
+                        {{topic}}
+                    </option>
+                </select>
+                <p>SELCETED COURSE: {{selectedTopic}}</p>
+                <select multiple v-model='selectedLocation'>
+                    <option v-for="location in locations">{{location}}</option>
+                </select>
+                <p>SELECTED LOCATION: {{selectedLocation}}</p>
+                <button v-on:click='reset' class='submit'>RESET</button>
+                <div id="courseList">
+                    <h2>COURSE LIST</h2>
+                    <div v-for="course in filteredCourses" class="course">
+                        <a v-for='(value) in course'>{{value}}</a>
+                    </div>
+                </div>
+            </div>
             <script>
                 var rating = new Vue({
                     el: '#rating',
@@ -69,9 +90,75 @@
                         ]
                     }
                 });
+                var filterApp = new Vue({
+                    el: '#filter',
+                    data: {
+                        courses: [
+                            { topic: 'Maths', location: 'Hendon', price: 100 },
+                            { topic: 'Maths', location: 'Colindale', price: 80 },
+                            { topic: 'Maths', location: 'Brent_Cross', price: 90 },
+                            { topic: 'Maths', location: 'Golders_Green', price: 120 },
+
+                            { topic: 'English', location: 'Hendon', price: 100 },
+                            { topic: 'English', location: 'Colindale', price: 80 },
+                            { topic: 'English', location: 'Brent_Cross', price: 90 },
+                            { topic: 'English', location: 'Golders_Green', price: 120 },
+
+                            { topic: 'Science', location: 'Hendon', price: 100 },
+                            { topic: 'Science', location: 'Colindale', price: 80 },
+                            { topic: 'Science', location: 'Brent_Cross', price: 90 },
+                            { topic: 'Science', location: 'Golders_Green', price: 120 },
+
+                            { topic: 'Sports', location: 'Hendon', price: 100 },
+                            { topic: 'Sports', location: 'Colindale', price: 80 },
+                            { topic: 'Sports', location: 'Brent_Cross', price: 90 },
+                            { topic: 'Sports', location: 'Golders_Green', price: 120 },
+
+                        ],
+                        selectedTopic: [],
+                        selectedLocation: [],
+                    },
+                    methods: {
+                        reset: function () {
+                            this.selectedTopic = [];
+                            this.selectedLocation = [];
+                        }
+                    },
+                    computed: {
+                        topics: function () { // return an array of all the topics
+                            return [...new Set(this.courses.map(x => x.topic))]
+                        },
+                        locations: function () {
+                            return [...new Set(this.courses.map(x => x.location))]
+                        },
+                        filteredCourses: function () {
+                            var topics = this.selectedTopic, locations = this.selectedLocation;
+                            return this.courses.filter(function (course) {
+                                var topicMatch = false, locationMatch = false;
+                                if (topics.length > 0) {
+                                    if (topics.includes(course.topic)) {
+                                        topicMatch = true;
+                                    }
+                                }
+                                else {
+                                    topicMatch = true;
+                                }
+                                if (locations.length > 0) {
+                                    if (locations.includes(course.location)) {
+                                        locationMatch = true;
+                                    }
+                                }
+                                else {
+                                    locationMatch = true;
+                                }
+                                return topicMatch && locationMatch
+                            })
+                        }
+                    }
+                })
             </script>
         </section>
-        
+
         <footer>
             <div class="footer-text">
                 <p>© CLASS AND ACTIVITIES BY ERDEM AKSU ©</p>

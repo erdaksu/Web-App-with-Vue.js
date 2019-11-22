@@ -62,6 +62,14 @@ table {
   padding: 10px;
   text-align: center;
 }
+
+.course {
+  border: solid lightblue;
+  /* width: 150px; */
+  display: inline-block;
+  margin: 10px;
+  padding: 10px;
+  }
 /* - MAIN SECTIONS - */
 header {
   background-color: rgb(65, 65, 65);
