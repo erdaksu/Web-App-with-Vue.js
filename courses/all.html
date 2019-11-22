@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <link rel="stylesheet" href="/style.css" />
+    <link href="https://fonts.googleapis.com/css?family=Medula One" rel="stylesheet" />
+    <title>Class and Activities</title>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <img id="logo" src="/images/logo.png" />
+            <ul>
+                <li><a class="active" href="/index.html">ALL COURSES</a></li>
+                <li><a href="/index.html">HOME</a></li>
+                <li><a href="/login.html">LOGIN</a></li>
+                <li><a href="/register.html">REGISTER</a></li>
+            </ul>
+        </header>
+
+        <aside>
+            <h1>CLICK ON TITLE TO SORT RESULTS ASC OR DSC ORDER</h1>
+            <div id="filters">
+                <table>
+                    <tr>
+                        <th v-on="click: orderBy('topic')">Course</th>
+                        <th v-on="click: orderBy('location')">Location</th>
+                        <th v-on="click: orderBy('price')">Price</th>
+                    </tr>
+                    <tr v-repeat="item : courses | orderBy sortKey desc">
+                        <td>{{ item.topic }}</td>
+                        <td>{{ item.location }}</td>
+                        <td>{{ item.price}}</td>
+                    </tr>
+                </table>
+            </div>
+        </aside>
+
+        <section>
+            <h1>LEAVE A REVIEW FOR ALL COURSES</h1>
+            <p>SELECT WHAT YOU RATE THE COURSE</p>
+            <div id="rating">
+                <select v-model="selected">
+                    <option v-for="option in options" v-bind:value="option.value">
+                        {{ option.text }}
+                    </option>
+                </select>
+                <br>
+                <span>YOUR RATING:</span>
+                <br>
+                <span>{{ selected}}</span>
+            </div>
+            <script>
+                var rating = new Vue({
+                    el: '#rating',
+                    data: {
+                        selected: 'PLEASE LEAVE A RATING',
+                        options: [
+                            { text: '1/5', value: '1/5 OK THANKS WE WILL TRY TO IMPROVE FOR THE NEXT TIME' },
+                            { text: '2/5', value: '2/5 WE WILL TRY TO IMPROVE FOR THE NEXT TIME' },
+                            { text: '3/5', value: '3/5 THANKS' },
+                            { text: '4/5', value: '4/5 THANKS FOR THE 4 STARS' },
+                            { text: '5/5', value: '5/5 THANKS FOR THE GREAT FEEDBACK :)' },
+                        ]
+                    }
+                });
+            </script>
+        </section>
+        
+        <footer>
+            <div class="footer-text">
+                <p>© CLASS AND ACTIVITIES BY ERDEM AKSU ©</p>
+                <p>CONTACT EMAIL: CLASSANDACTIVITESUPPORT@GMAIL.COM</p>
+            </div>
+            <div id="footer-links">
+                <a href=https:/www.instagram.com/classandactivities.> <img src=/images/instagram.png width="50"
+                    height="50">
+                    <a href=https:/www.twitter.com/classandactivities.> <img src=/images/twitter.png width="50"
+                        height="50">
+            </div>
+        </footer>
+    </div>
+    <script src="/vue.js"></script>
+    <script src="app.js" charset="utf-8"></script>
+</body>
+
+</html>

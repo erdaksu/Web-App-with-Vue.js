@@ -4,6 +4,8 @@ var app = new Vue({
         return {
             searchQuery: null,
             courses: [
+                { 'topic': 'All Classes -', 'location': 'All Locations -', 'price': 'All Prices', 'url': "/courses/all.html" },
+
                 { 'topic': 'Maths Classes -', 'location': 'Location: Hendon -', 'price': 'Price: £100', 'url': "/courses/math.html" },
                 { 'topic': 'Maths Classes -', 'location': 'Location: Colindale -', 'price': 'Price: £80', 'url': "/courses/math.html" },
                 { 'topic': 'Maths Classes -', 'location': 'Location: Brent Cross -', 'price': 'Price: £90', 'url': "/courses/math.html" },
@@ -135,6 +137,8 @@ var signupApp = new Vue({
             else {
                 users = [{ 'type': this.type,'email': newEmail, 'password': this.password }];
                 localStorage.setItem('users', JSON.stringify(users));
+                alert('GREAT NOW YOU CAN LOGIN');
+                    return;
             }
         }
     }
@@ -151,21 +155,19 @@ var loginApp = new Vue({
         onSubmit: function () {
             var users = '';
             var newEmail = this.email;
+            var newPassword = this.password;
+            var newType = this.type
             if (localStorage.getItem('users')) { 
                 users = JSON.parse(localStorage.getItem('users'));
             };
             if (users) {
-                if (users.some(function (user) { return user.email === newEmail })) {
-                    alert('WELCOME!');
+                if (users.some(function (user) { return (user.email === newEmail && user.password === newPassword)})) {
+                    alert('WELCOME TO THE PAGE USER:  ' + newEmail, newType );
+                    alert('CLICK HOME TO SEE THE COURSES AND ACTIVITIES');
                     return;
-                }
-                users.push({ 'type': this.type, 'email': newEmail, 'password': this.password });
-                localStorage.setItem('users', JSON.stringify(users));
-            }
-            else {
-                users = [{ 'type': this.type,'email': newEmail, 'password': this.password }];
-                localStorage.setItem('users', JSON.stringify(users));
+                } else {
+                    alert('ACCOUNT DOES NOT EXIST, CHECK EMAIL AND PASSWORD OR SIGN UP');
             }
         }
     }
-})
+}})

@@ -40,11 +40,12 @@ li a:hover:not(.active) {
 }
 table {
   float: center;
-  background-color: #78a0b9;
+  text-align: left;
+  font-size: 37px;
 }
 .searchbar {
-  float: right;
-  display: block;
+  float: left;
+
 }
 .class-activities {
   font-size: 25px;
@@ -91,7 +92,6 @@ section {
   font-family: "Medula One";
   color: white;
   padding: 10px;
-  text-align: right;
 }
 footer {
   background-color: rgb(65, 65, 65);

@@ -19,17 +19,14 @@
                 <li><a class="active" href="#home">HOME</a></li>
                 <li><a href="login.html">LOGIN</a></li>
                 <li><a href="register.html">REGISTER</a></li>
-                <li><a href="basket.html">SHOPPING BASKET</a></li>
             </ul>
         </header>
 
         <aside>
             <h1>CLICK ON COURSE TO GO TO COURSE PAGE</h1>
             <div id="search">
-                <div class="searchbar">
                     <img id="search-png" src="/images/searchbar.png" />
                     <input class="search-box" type="text" v-model="searchQuery" placeholder="SEARCH FOR A COURSES" />
-                </div>
                 <div class="class-activities">
                     <table v-if="courses.length" class="table">
                         <tr>
@@ -60,11 +57,11 @@
                         <label><input type="radio" v-model="selectedCourse" value="Sports" /> Sports</label>
                     </div>
                     </br>
-                    <li v-for="course in filteredCourses">
+                    <ul v-for="course in filteredCourses">
                         {{ course.topic }}
                         {{ course.location }}
                         {{ course.price }}
-                    </li>
+                    </ul>
                     <br>
                 </ul>
                 <ul class="course-list">
@@ -78,11 +75,11 @@
                             GoldersGreen</label>
                     </div>
                     </br>
-                    <li v-for="course in filteredLocations">
+                    <ul v-for="course in filteredLocations">
                         {{ course.topic }}
                         {{ course.location }}
                         {{ course.price }}
-                    </li>
+                    </ul>
                     <br>
                 </ul>
                 <ul class="course-list">
@@ -95,11 +92,11 @@
                         <label><input type="radio" v-model="selectedPrice" value="£120" /> £120</label>
                     </div>
                     </br>
-                    <li v-for="course in filteredPrices">
+                    <ul v-for="course in filteredPrices">
                         {{ course.topic }}
                         {{ course.location }}
                         {{ course.price }}
-                    </li>
+                    </ul>
                 </ul>
             </div>
         </section>
